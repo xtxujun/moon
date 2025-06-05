@@ -1,31 +1,21 @@
 :root {
-  --text-c: #374151; // 默认文本颜色（白底）
-  --text-c-1: #606060; // 默认副文本颜色
+  --text-c: #374151;
+  --text-c-1: #606060;
+
+  // 统一的背景色变量
+  --bg-c: #f3f4f6; /* 默认背景色为白色 */
+  --main-bg-c: #ffffff; /* 主背景色为白色 */
 
   // ------ Dark theme
-  --dark-bg-c: #18181a;       // 暗黑模式背景色
-  --dark-main-bg-c: #1e1e20;  // 暗黑模式主背景色
-  --dark-text-c: #e1e1e1;     // 暗黑模式文本颜色
-  --dark-text-c-1: #c1c1c1;   // 暗黑模式副文本颜色
-}
-
-html {
-  background-color: var(--bg-c);  // 默认应用背景色变量
-  color: var(--text-c);            // 默认应用文本颜色
+  --dark-bg-c: #18181a;
+  --dark-main-bg-c: #1e1e20;
+  --dark-text-c: #e1e1e1;
+  --dark-text-c-1: #c1c1c1;
 }
 
 html.dark {
-  --bg-c: var(--dark-bg-c) !important;         // 暗黑模式背景色
-  --main-bg-c: var(--dark-main-bg-c) !important; // 暗黑模式主背景色
-  --text-c: var(--dark-text-c) !important;      // 暗黑模式文本颜色
-  --text-c-1: var(--dark-text-c-1) !important;  // 暗黑模式副文本颜色
-}
-
-body {
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-  background-color: var(--bg-c);  // 使用全局背景色变量
-  color: var(--text-c);            // 使用全局文本颜色变量
-  transition: background-color 0.3s ease, color 0.3s ease; // 背景色和文本颜色切换时的过渡效果
+  --bg-c: var(--dark-bg-c);
+  --main-bg-c: var(--dark-main-bg-c);
+  --text-c: var(--dark-text-c);
+  --text-c-1: var(--dark-text-c-1);
 }
