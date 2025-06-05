@@ -2,10 +2,6 @@
   --text-c: #374151;
   --text-c-1: #606060;
 
-  // 统一的背景色变量
-  --bg-c: #f3f4f6; /* 默认背景色为白色 */
-  --main-bg-c: #ffffff; /* 主背景色为白色 */
-
   // ------ Dark theme
   --dark-bg-c: #18181a;
   --dark-main-bg-c: #1e1e20;
@@ -14,8 +10,8 @@
 }
 
 html.dark {
-  --bg-c: var(--dark-bg-c);
-  --main-bg-c: var(--dark-main-bg-c);
-  --text-c: var(--dark-text-c);
-  --text-c-1: var(--dark-text-c-1);
+  --bg-c: var(--dark-bg-c) !important;
+  --main-bg-c: var(--dark-main-bg-c) !important;
+  --text-c: var(--dark-text-c) !important;
+  --text-c-1: var(--dark-text-c-1) !important;
 }
