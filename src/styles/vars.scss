@@ -1,4 +1,7 @@
+// _vars.scss
+
 :root {
+  // 文字颜色
   --text-c: #374151;
   --text-c-1: #606060;
 
@@ -7,6 +10,10 @@
   --dark-main-bg-c: #1e1e20;
   --dark-text-c: #e1e1e1;
   --dark-text-c-1: #c1c1c1;
+
+  // ------ Bing 风格渐变背景
+  --bg-bing-light: linear-gradient(to bottom right, #a8edea, #fed6e3);
+  --bg-bing-dark: linear-gradient(#1a1a1a, #2c2c2c);
 }
 
 html.dark {

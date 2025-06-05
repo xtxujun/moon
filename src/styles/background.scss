@@ -1,0 +1,32 @@
+// _background.scss
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $bing-gradient-light;
+  background-size: cover;
+  background-position: center;
+  transition: background 0.5s ease;
+  font-family: sans-serif;
+  position: relative;
+}
+
+.dark body {
+  background: $bing-gradient-dark;
+}
+
+.background-overlay {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+
+  .dark & {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
