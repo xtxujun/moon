@@ -28,15 +28,10 @@ body {
   font-size: 16px;
   line-height: 1.5;
   background-color: var(--main-bg-c, #fff); /* 默认背景颜色 */
-  background-image: var(--background-image, none); /* 使用 CSS 变量来动态设置背景图像 */
+  background-image: var(--background-image, none); /* 动态设置背景图像 */
   background-size: cover; /* 确保背景图像覆盖整个页面 */
   background-position: center; /* 背景居中显示 */
-  color: var(--text-c) !important; /* 确保文本颜色应用，添加 !important 防止覆盖 */
-}
-
-a {
-  color: inherit; /* 链接继承父元素颜色 */
-  text-decoration: none; /* 去除默认下划线 */
+  color: var(--text-c) !important; /* 确保文本颜色应用 */
 }
 
 /* 深色模式的适配 */
@@ -54,4 +49,3 @@ html.dark body {
   background-color: var(--main-bg-c) !important; /* 深色模式下的背景颜色 */
   color: var(--text-c) !important; /* 深色模式下的字体颜色 */
 }
-
