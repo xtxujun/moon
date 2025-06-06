@@ -1,7 +1,4 @@
-// _vars.scss
-
 :root {
-  // 文字颜色
   --text-c: #374151;
   --text-c-1: #606060;
 
@@ -11,9 +8,8 @@
   --dark-text-c: #e1e1e1;
   --dark-text-c-1: #c1c1c1;
 
-  // ------ Bing 风格渐变背景
-  --bg-bing-light: linear-gradient(to bottom right, #a8edea, #fed6e3);
-  --bg-bing-dark: linear-gradient(#1a1a1a, #2c2c2c);
+  // ------ 背景图像
+  --background-image: none; // 默认背景图像
 }
 
 html.dark {
@@ -21,4 +17,14 @@ html.dark {
   --main-bg-c: var(--dark-main-bg-c) !important;
   --text-c: var(--dark-text-c) !important;
   --text-c-1: var(--dark-text-c-1) !important;
+
+  // 深色主题下的背景图像
+  --background-image: url('https://www.bing.com/path/to/dark-mode-image.jpg'); // 你可以替换为实际的深色模式背景图像链接
 }
+
+html {
+  --bg-c: #f3f4f6; // 默认背景颜色（浅色模式）
+  --main-bg-c: #fff;
+  --background-image: none; // 默认背景图像（浅色模式）
+}
+``

@@ -1,13 +1,22 @@
 :root {
   font-size: 4px;
 }
+
 html {
   color: var(--text-c);
-  background-color: #f3f4f6;
-  transition: background 0.8s;
+  background-color: #f3f4f6; // 默认背景颜色
+  background-image: var(--background-image, none); // 使用 CSS 变量来动态设置背景图像
+  background-size: cover; // 确保背景图像覆盖整个页面
+  background-position: center; // 背景居中显示
+  transition: background 0.8s; // 背景过渡效果
 }
+
 body {
   font-size: 14px;
+  background-color: var(--main-bg-c, #fff); // 默认背景颜色
+  background-image: var(--background-image, none); // 使用 CSS 变量来动态设置背景图像
+  background-size: cover; // 确保背景图像覆盖整个页面
+  background-position: center; // 背景居中显示
 }
 
 ::-webkit-scrollbar {
@@ -15,6 +24,7 @@ body {
   height: 9px;
   background-color: var(--bg-c);
 }
+
 ::-webkit-scrollbar-thumb {
   border: 3px solid transparent;
   background-clip: padding-box;
@@ -35,6 +45,7 @@ body {
 .ghost {
   visibility: hidden;
 }
+
 .dragging {
   opacity: 1 !important;
   .site__handle {
@@ -58,15 +69,19 @@ body {
   animation: none;
   mix-blend-mode: normal;
 }
+
 ::view-transition-old(root) {
   z-index: 1;
 }
+
 ::view-transition-new(root) {
   z-index: 9999;
 }
+
 .dark::view-transition-old(root) {
   z-index: 9999;
 }
+
 .dark::view-transition-new(root) {
   z-index: 1;
 }

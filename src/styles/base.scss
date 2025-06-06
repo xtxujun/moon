@@ -27,23 +27,20 @@ body {
   font-family: system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  background-color: var(--main-bg-c, #fff);
+  background-color: var(--main-bg-c, #fff); // 默认背景颜色
+  background-image: var(--background-image, none); // 使用 CSS 变量来动态设置背景图像
+  background-size: cover; // 确保背景图像覆盖整个页面
+  background-position: center; // 背景居中显示
   color: var(--text-c);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/* 深色模式的适配 */
+html.dark {
+  --bg-c: var(--dark-bg-c) !important;
+  --main-bg-c: var(--dark-main-bg-c) !important;
+  --text-c: var(--dark-text-c) !important;
+  --text-c-1: var(--dark-text-c-1) !important;
 
-input {
-  outline: none;
-}
-
-input:focus {
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
-}
-
-img {
-  display: block;
+  /* 深色模式下的背景图像 */
+  --background-image: url('https://www.bing.com/path/to/dark-mode-image.jpg'); // 你可以替换为动态获取的URL
 }
