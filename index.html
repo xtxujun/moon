@@ -5,6 +5,19 @@
     <link rel="icon" href="/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>导航页-搜索</title>
+
+    <!-- 引入动态背景脚本 -->
+    <script>
+      // 获取Bing的每日壁纸
+      fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
+        .then(response => response.json())
+        .then(data => {
+          const imageUrl = 'https://www.bing.com' + data.images[0].url;
+          // 将背景图像设置为 CSS 变量
+          document.documentElement.style.setProperty('--background-image', `url(${imageUrl})`);
+        })
+        .catch(error => console.log('获取Bing背景图像失败:', error));
+    </script>
   </head>
   <body>
     <div id="app"></div>
