@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" class="light"> <!-- 默认为浅色模式 -->
   <head>
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.svg">
@@ -17,6 +17,25 @@
           document.documentElement.style.setProperty('--background-image', `url(${imageUrl})`);
         })
         .catch(error => console.log('获取Bing背景图像失败:', error));
+
+      // 检测系统主题，自动切换深色模式或浅色模式
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+      // 根据用户系统主题自动切换模式
+      if (prefersDarkScheme.matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      // 监听用户的主题偏好变化
+      prefersDarkScheme.addEventListener('change', (e) => {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      });
     </script>
   </head>
   <body>
