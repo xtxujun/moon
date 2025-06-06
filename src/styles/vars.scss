@@ -8,8 +8,8 @@
   --dark-text-c: #e1e1e1;
   --dark-text-c-1: #c1c1c1;
 
-  // ------ 背景图像
-  --background-image: none; // 默认背景图像
+  // ------ Background image (Add this for dynamic background)
+  --background-image: none; // Default background image
 }
 
 html.dark {
@@ -18,13 +18,12 @@ html.dark {
   --text-c: var(--dark-text-c) !important;
   --text-c-1: var(--dark-text-c-1) !important;
 
-  // 深色主题下的背景图像
-  --background-image: url('https://www.bing.com/path/to/dark-mode-image.jpg'); // 你可以替换为实际的深色模式背景图像链接
+  // Dark mode background image (optional, replace with dynamic URL)
+  --background-image: url('https://www.bing.com/path/to/dark-mode-image.jpg');
 }
 
 html {
-  --bg-c: #f3f4f6; // 默认背景颜色（浅色模式）
+  --bg-c: #f3f4f6; // Default background color (light mode)
   --main-bg-c: #fff;
-  --background-image: none; // 默认背景图像（浅色模式）
+  --background-image: none; // Default background image for light mode
 }
-``
