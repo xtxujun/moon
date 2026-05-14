@@ -11,51 +11,73 @@ const fetchBingWallpaper = async () => {
     const res = await fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN')
     const data = await res.json()
     const img = data.images[0]
-    
-    bingBg.value = `https://www.bing.com${img.urlbase}_UHD.jpg`
+    bingBg.value = `https://www.bing.com${img.urlBase}_UHD.jpg` // 使用高清大图
     bingTitle.value = img.title
     bingCopyright.value = img.copyright
-  } catch (e) {
-    console.error('Bing 背景加载失败，使用备用图')
-    bingBg.value = 'https://picsum.photos/1920/1080?random=42'
+  } catch (error) {
+    console.error('获取壁纸失败:', error)
   }
 }
 
-onMounted(fetchBingWallpaper)
+onMounted(() => {
+  fetchBingWallpaper()
+})
 </script>
 
 <template>
-  <!-- 1. 背景图层 (最底层) -->
-  <div 
-    class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
-    :style="{ backgroundImage: `url(${bingBg})` }"
-  ></div>
+  <div class="app-container">
+    <!-- 1. 背景层：固定在底部 -->
+    <div 
+      class="background-layer" 
+      v-if="bingBg"
+      :style="{ backgroundImage: `url(${bingBg})` }"
+    ></div>
 
-  <!-- 2. 磨砂玻璃层 (中间层) -->
-  <!-- 注意：backdrop-blur 是实现毛玻璃的关键，bg-black/40 是半透明黑色背景 -->
-  <div class="fixed inset-0 bg-black/40 backdrop-blur-3xl -z-9"></div>
-
-  <!-- 3. 图片信息 (文字层) -->
-  <!-- pointer-events-none 让这个文字层不阻挡下方的点击事件 -->
-  <div v-if="bingTitle" class="fixed bottom-4 right-4 text-white/90 text-sm max-w-xs text-right z-10 pointer-events-none">
-    <div class="font-medium">{{ bingTitle }}</div>
-    <div class="text-xs opacity-80 text-ellipsis overflow-hidden whitespace-nowrap">
-      {{ bingCopyright }}
+    <!-- 2. 内容层：显示你的图标和路由视图 -->
+    <div class="content-layer">
+      <RouterView />
     </div>
   </div>
-
-  <!-- 4. 应用内容 (最上层) -->
-  <!-- 这里的内容会显示在磨砂层和背景图之上 -->
-  <AppProvider>
-    <AppContainer>
-      <RouterView />
-    </AppContainer>
-  </AppProvider>
 </template>
 
 <style scoped>
-/* 
-  backdrop-blur 兼容性处理 (如果部分浏览器不生效可尝试开启 autoprefixer)
-  这里设置毛玻璃的模糊程度，blur-3xl 是非常强的模糊，看起来像磨砂质感
-*/
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden; /* 防止背景图溢出出现滚动条 */
+}
+
+/* 背景层样式 */
+.background-layer {
+  position: fixed; /* 固定定位，随屏幕滚动 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* 放在最底层 */
+  filter: blur(8px); /* 磨砂模糊效果 */
+  transform: scale(1.1); /* 放大一点防止模糊后露边 */
+}
+
+/* 遮罩层：让文字更清晰（可选） */
+.background-layer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* 黑色半透明遮罩，加深背景 */
+  z-index: 0;
+}
+
+/* 内容层样式 */
+.content-layer {
+  position: relative;
+  z-index: 10; /* 确保内容在背景之上 */
+  min-height: 100vh;
+}
 </style>
