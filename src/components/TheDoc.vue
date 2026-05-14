@@ -8,10 +8,10 @@
   </div>
 </template>
 
+<!-- 关键：删除所有全局样式！只保留容器透明 -->
 <style scoped>
-/* 关键：必须是完全透明的容器 */
 .doc {
   min-height: 100vh;
-  background-color: transparent !important; /* 强制透明 */
+  background-color: transparent !important; /* 仅容器透明 */
 }
 </style>
