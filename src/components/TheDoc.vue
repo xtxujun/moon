@@ -1,17 +1,17 @@
 <script setup>
-// 可以留空，但标签要存在
+// 逻辑留空，但标签必须存在
 </script>
 
 <template>
-  <!-- 注意：这里必须有一个根元素包裹内容 -->
+  <!-- 根元素必须有闭合标签 -->
   <div class="doc">
-    <!-- <slot /> 表示这里会插入 index.vue 里的内容 -->
+    <!-- 关键：slot 必须写成自闭合形式 -->
     <slot />
   </div>
 </template>
 
 <style lang="scss">
-/* 让 html 和 body 高度占满屏幕，且无默认边距 */
+/* 全局布局重置 */
 html, body {
   margin: 0;
   padding: 0;
@@ -26,7 +26,7 @@ html, body {
   z-index: 1;
 }
 
-/* --- 新增代码：暗色遮罩层 --- */
+/* 暗色遮罩层（可调整透明度） */
 .doc::before {
   content: "";
   position: fixed;
@@ -34,5 +34,8 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* 黑色半透明，可根据喜好调整 0.6 */
-  z-index
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  pointer-events: none;
+}
+</style>
