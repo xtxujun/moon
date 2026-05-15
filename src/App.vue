@@ -33,7 +33,7 @@ onMounted(fetchBingWallpaper)
   ></div>
 
   <!-- 【修改这里】白色系毛玻璃叠加层 -->
-  <div class="fixed inset-0 bg-white/40 dark:bg-black/50 backdrop-blur-[6px] -z-9"></div>
+  <div class="fixed inset-0 bg-white/40 dark:bg-black/50 backdrop-blur-[3px] -z-9"></div>
 
   <!-- 图片信息 -->
   <div v-if="bingTitle" class="fixed bottom-6 right-6 text-white/90 dark:text-white/80 text-right z-10 max-w-xs pointer-events-none drop-shadow-md">
