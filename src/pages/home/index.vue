@@ -1,48 +1,55 @@
-<script setup lang="ts">
-import MainHeader from './components/MainHeader.vue'
-import MainClock from './components/MainClock.vue'
-import MainSearch from './components/MainSearch.vue'
-import SiteContainer from './components/SiteContainer.vue'
-import MainSetting from './components/MainSetting.vue'
+<style lang="scss" scoped>
+/* ==================== 明亮模式文字对比度优化 ==================== */
+.group__name,
+.site-name,
+.text,
+span {
+  color: #1f2937 !important;        /* 深黑色，提升明亮模式清晰度 */
+  font-weight: 500;
+}
 
-defineOptions({
-  name: 'HomePage',
-})
+/* 暗黑模式保持亮白色 */
+.dark .group__name,
+.dark .site-name,
+.dark span {
+  color: #f1f5f9 !important;
+}
 
-const settingStore = useSettingStore()
-</script>
+/* 图标卡片文字悬停效果 */
+.SiteItemCard {
+  transition: all 0.2s ease;
+}
 
-<template>
-  <TheDoc>
-    <div p="8 sm:12 md:16" w="full" :class="{ 'no-select': settingStore.isSetting }">
-      <MainHeader />
+.SiteItemCard:hover {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
 
-      <MainClock v-if="!settingStore.isSetting" />
+/* 原有样式保留 + 轻微增强 */
+.site--setting {
+  border: 1px dashed var(--setting-border-c);
+}
 
-      <!-- 优化版：更宽 + 更好的明亮/暗黑适配 -->
-      <div class="mt-6 max-w-[1280px] mx-auto 
-                  bg-white/70 dark:bg-black/50 
-                  backdrop-blur-3xl 
-                  rounded-3xl border border-white/30 dark:border-white/20 
-                  shadow-2xl overflow-hidden">
-        
-        <div class="p-8 sm:p-10">
-          <MainSearch v-if="!settingStore.isSetting" class="mb-10" />
-          <SiteContainer :key="settingStore.siteContainerKey" />
-        </div>
-      </div>
+.group__name {
+  position: relative;
+  &::before {
+    content: '';
+    width: 4px;
+    height: 72%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-c);
+    border-radius: 2px;
+  }
+}
 
-      <MainSetting />
+.group__header--setting {
+  border: 1px dashed var(--setting-border-c);
+}
 
-      <TheFooter v-if="settingStore.getSettingValue('showFooter')" />
-    </div>
-  </TheDoc>
-</template>
-
-<route lang="yaml">
-path: /
-children:
-  - name: setting
-    path: setting
-    component: /src/components/Blank.vue
-</route>
+.btn--add-site {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+</style>
