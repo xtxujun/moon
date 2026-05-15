@@ -32,8 +32,8 @@ onMounted(fetchBingWallpaper)
     :style="{ backgroundImage: `url(${bingBg})` }"
   ></div>
 
-  <!-- 模糊毛玻璃叠加层 -->
-  <div class="fixed inset-0 bg-black/60 backdrop-blur-md -z-9"></div>
+  <!-- 毛玻璃叠加层（加强版） -->
+<div class="fixed inset-0 bg-black/55 backdrop-blur-[4px] -z-9"></div>
 
   <!-- 图片信息 -->
   <div v-if="bingTitle" class="fixed bottom-4 right-4 text-white/80 text-sm max-w-xs text-right z-10 pointer-events-none">
