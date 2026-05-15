@@ -19,9 +19,14 @@ const settingStore = useSettingStore()
 
       <MainClock v-if="!settingStore.isSetting" />
 
-      <!-- 重点：给主要内容增加半透明毛玻璃卡片 -->
-      <div class="mt-6 max-w-6xl mx-auto bg-white/10 dark:bg-black/30 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-2xl p-8">
-        <MainSearch v-if="!settingStore.isSetting" class="my-8" />
+      <!-- 优化后的毛玻璃卡片区域 -->
+      <div class="mt-8 max-w-[1100px] mx-auto 
+                  bg-white/15 dark:bg-black/40 
+                  backdrop-blur-3xl 
+                  rounded-3xl border border-white/25 shadow-2xl 
+                  p-8 sm:p-10">
+        
+        <MainSearch v-if="!settingStore.isSetting" class="mb-10" />
 
         <SiteContainer :key="settingStore.siteContainerKey" />
       </div>
