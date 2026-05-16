@@ -14,14 +14,21 @@ const settingStore = useSettingStore()
 
 <template>
   <TheDoc>
-    <div class="relative z-50 min-h-screen p-8 bg-white/90 dark:bg-black/90">
+    <div class="relative z-30 min-h-screen p-6 sm:p-8 md:p-12">
       <MainHeader />
 
       <MainClock v-if="!settingStore.isSetting" />
 
-      <div class="max-w-[1400px] mx-auto mt-8 bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl p-8">
-        <MainSearch v-if="!settingStore.isSetting" class="mb-10" />
-        <SiteContainer :key="settingStore.siteContainerKey" />
+      <!-- 内容主卡片 -->
+      <div class="max-w-[1420px] mx-auto mt-6 
+                  bg-white/85 dark:bg-zinc-900/90 
+                  backdrop-blur-2xl rounded-3xl border border-white/40 
+                  shadow-2xl overflow-hidden relative z-40">
+        
+        <div class="p-8 sm:p-10">
+          <MainSearch v-if="!settingStore.isSetting" class="mb-10" />
+          <SiteContainer :key="settingStore.siteContainerKey" />
+        </div>
       </div>
 
       <MainSetting />
