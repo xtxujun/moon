@@ -27,19 +27,12 @@ onMounted(() => {
 
 <template>
   <!-- Bing 背景 -->
-  <div 
-    class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10 transition-all duration-1000"
-    :style="{ backgroundImage: `url(${bingBg})` }"
-  ></div>
+  <div class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10 transition-all duration-1000" 
+       :style="{ backgroundImage: `url(${bingBg})` }"></div>
 
-  <!-- 全局白色磨砂毛玻璃 -->
-  <div class="fixed inset-0 bg-white/45 dark:bg-black/55 backdrop-blur-[8px] -z-9"></div>
+  <!-- 白色磨砂层 - 透明度降低 -->
+  <div class="fixed inset-0 bg-white/30 dark:bg-black/50 backdrop-blur-[6px] -z-9"></div>
 
-  <!-- 图片信息 -->
-  <div v-if="bingTitle" class="fixed bottom-6 right-6 text-white/90 dark:text-white/80 text-right z-10 max-w-xs pointer-events-none">
-    <div class="text-sm">{{ bingTitle }}</div>
-    <div class="text-xs opacity-75">{{ bingCopyright }}</div>
-  </div>
-
-  <RouterView />
+  <!-- 内容容器 - 提高层级 -->
+  <RouterView class="relative z-30" />
 </template>
