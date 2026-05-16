@@ -14,22 +14,27 @@ const settingStore = useSettingStore()
 
 <template>
   <TheDoc>
-    <div p="12 sm:24" bg="$main-bg-c" w="full sm:auto" :class="{ no_select: settingStore.isSetting }">
+    <div p="8 sm:12 md:16" w="full" :class="{ 'no-select': settingStore.isSetting }">
       <MainHeader />
+
       <MainClock v-if="!settingStore.isSetting" />
-      <MainSearch v-if="!settingStore.isSetting" my-24 />
-      <SiteContainer :key="settingStore.siteContainerKey" />
+
+      <!-- 优化后的白色磨砂毛玻璃内容区域 -->
+      <div class="mt-6 max-w-[1420px] mx-auto 
+                  bg-white/75 dark:bg-zinc-900/85 
+                  backdrop-blur-3xl 
+                  rounded-3xl border border-white/40 dark:border-white/20 
+                  shadow-2xl overflow-hidden">
+        
+        <div class="p-8 sm:p-10">
+          <MainSearch v-if="!settingStore.isSetting" class="mb-10" />
+          <SiteContainer :key="settingStore.siteContainerKey" />
+        </div>
+      </div>
+
       <MainSetting />
+
       <TheFooter v-if="settingStore.getSettingValue('showFooter')" />
     </div>
-    <Blank />
   </TheDoc>
 </template>
-
-<route lang="yaml">
-path: /
-children:
-  - name: setting
-    path: setting
-    component: /src/components/Blank.vue
-</route>
