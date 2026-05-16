@@ -26,13 +26,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Bing 背景 -->
-  <div class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10 transition-all duration-1000" 
-       :style="{ backgroundImage: `url(${bingBg})` }"></div>
+  <div class="fixed inset-0 bg-cover bg-center -z-10" :style="{ backgroundImage: `url(${bingBg})` }"></div>
+  
+  <!-- 白色磨砂 -->
+  <div class="fixed inset-0 bg-white/35 dark:bg-black/60 backdrop-blur-[8px] -z-9"></div>
 
-  <!-- 白色磨砂层 - 透明度降低 -->
-  <div class="fixed inset-0 bg-white/30 dark:bg-black/50 backdrop-blur-[6px] -z-9"></div>
-
-  <!-- 内容容器 - 提高层级 -->
-  <RouterView class="relative z-30" />
+  <!-- 内容强制最高层级 -->
+  <RouterView class="relative z-[9999]" />
 </template>
