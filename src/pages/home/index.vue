@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import MainHeader from './components/MainHeader.vue'
-import MainClock from './components/MainClock.vue'
-import MainSearch from './components/MainSearch.vue'
-import SiteContainer from './components/SiteContainer.vue'
-import MainSetting from './components/MainSetting.vue'
+import { ref, onMounted } from 'vue'
+// 【关键修改1】路径必须用 @/ 开头，指向 src/components，不能用 ./components
+import MainHeader from '@/components/MainHeader.vue'
+import MainClock from '@/components/MainClock.vue'
+import MainSearch from '@/components/MainSearch.vue'
+import SiteContainer from '@/components/SiteContainer.vue'
+import MainSetting from '@/components/MainSetting.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 defineOptions({
   name: 'HomePage',
