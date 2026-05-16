@@ -14,7 +14,8 @@ const settingStore = useSettingStore()
 
 <template>
   <TheDoc>
-    <div p="12 sm:24" bg="$main-bg-c" w="full sm:auto" :class="{ no_select: settingStore.isSetting }">
+    <!-- 修改了这一行：删除了 bg="$main-bg-c"，添加了 bg-transparent -->
+    <div p="12 sm:24" w="full sm:auto" bg="transparent" :class="{ no_select: settingStore.isSetting }">
       <MainHeader />
       <MainClock v-if="!settingStore.isSetting" />
       <MainSearch v-if="!settingStore.isSetting" my-24 />
