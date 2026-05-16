@@ -14,7 +14,7 @@ const settingStore = useSettingStore()
 
 <template>
   <TheDoc>
-    <div class="relative z-40 p-12 sm:p-24">
+    <div class="relative z-[10000] min-h-screen p-12 sm:p-24 bg-white/90 dark:bg-zinc-900/90">
       <MainHeader />
 
       <MainClock v-if="!settingStore.isSetting" />
