@@ -33,3 +33,11 @@ const settingStore = useSettingStore()
   </TheDoc>
 </template>
 
+<!-- 【关键修改5】保留这段路由配置，这是 vite-plugin-pages 识别子路由的关键 -->
+<route lang="yaml">
+path: /
+children:
+  - name: setting
+    path: setting
+    component: /src/components/Blank.vue
+</route>
