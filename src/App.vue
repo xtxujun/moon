@@ -26,11 +26,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="fixed inset-0 bg-cover bg-center -z-10" :style="{ backgroundImage: `url(${bingBg})` }"></div>
+  <div 
+    class="fixed inset-0 w-full h-full bg-cover bg-center z-[-1]" 
+    :style="{ backgroundImage: 'url(' + bingBg + ')' }"
+  ></div>
   
-  <!-- 白色磨砂 -->
-  <div class="fixed inset-0 bg-white/35 dark:bg-black/60 backdrop-blur-[8px] -z-9"></div>
-
-  <!-- 内容强制最高层级 -->
-  <RouterView class="relative z-[9999]" />
+   <!-- 这里是你的页面内容插槽 -->
+  <RouterView />
 </template>
