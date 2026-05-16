@@ -19,17 +19,9 @@ const settingStore = useSettingStore()
 
       <MainClock v-if="!settingStore.isSetting" />
 
-      <!-- 保守磨砂卡片 - 透明度较低，尽量不破坏原有样式 -->
-      <div class="mt-6 max-w-[1380px] mx-auto 
-                  bg-white/60 dark:bg-black/50 
-                  backdrop-blur-xl 
-                  rounded-3xl border border-white/20">
-        
-        <div class="p-8 sm:p-10">
-          <MainSearch v-if="!settingStore.isSetting" class="my-8" />
-          <SiteContainer :key="settingStore.siteContainerKey" />
-        </div>
-      </div>
+      <MainSearch v-if="!settingStore.isSetting" class="my-24" />
+
+      <SiteContainer :key="settingStore.siteContainerKey" />
 
       <MainSetting />
 
