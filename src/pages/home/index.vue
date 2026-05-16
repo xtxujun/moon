@@ -14,8 +14,8 @@ const settingStore = useSettingStore()
 
 <template>
   <TheDoc>
-    <div class="relative z-[10000] min-h-screen text-black p-12 sm:p-24 bg-white/30 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden">
-
+    <div class="relative min-h-screen p-12 sm:p-24 flex flex-col items-center justify-center">
+      
       <MainClock v-if="!settingStore.isSetting" />
 
       <MainSearch v-if="!settingStore.isSetting" class="my-24" />
