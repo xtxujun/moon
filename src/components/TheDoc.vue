@@ -1,14 +1,17 @@
 <script setup>
-
+// 逻辑留空
 </script>
 
 <template>
-  <!-- 可以在此添加一些样式 -->
   <div class="doc">
     <slot />
   </div>
 </template>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.doc {
+  min-height: 100vh;
+  /* 确保这里没有任何背景色，完全透明 */
+  background-color: transparent;
+}
 </style>
