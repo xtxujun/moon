@@ -3,6 +3,8 @@ import { RouterView } from 'vue-router'
 import { ref, onMounted } from 'vue'
 
 const bingBg = ref('')
+const bingTitle = ref('')
+const bingCopyright = ref('')
 
 const fetchBingWallpaper = async () => {
   try {
@@ -10,16 +12,29 @@ const fetchBingWallpaper = async () => {
     const data = await res.json()
     const img = data.images[0]
     bingBg.value = `https://www.bing.com${img.urlBase}_UHD.jpg`
+    bingTitle.value = img.title || 'Bing 每日美图'
+    bingCopyright.value = img.copyright || ''
   } catch (e) {
     bingBg.value = 'https://picsum.photos/1920/1080?random=1'
   }
 }
 
-onMounted(fetchBingWallpaper)
+onMounted(() => {
+  fetchBingWallpaper()
+  setInterval(fetchBingWallpaper, 86400000)
+})
 </script>
 
 <template>
-  <div class="fixed inset-0 bg-cover bg-center -z-10" :style="{ backgroundImage: `url(${bingBg})` }"></div>
-  <div class="fixed inset-0 bg-black/30 -z-9"></div>   <!-- 临时简单叠加 -->
-  <RouterView />
+  <!-- 1. Bing 背景 -->
+  <div 
+    class="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10 transition-all duration-1000"
+    :style="{ backgroundImage: `url(${bingBg})` }"
+  ></div>
+
+  <!-- 2. 白色磨砂毛玻璃（降低透明度） -->
+  <div class="fixed inset-0 bg-white/30 dark:bg-black/50 backdrop-blur-[6px] -z-9"></div>
+
+  <!-- 3. 主要内容 -->
+  <RouterView class="relative z-20" />
 </template>
