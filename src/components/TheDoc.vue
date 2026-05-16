@@ -1,22 +1,14 @@
 <script setup>
+
 </script>
 
 <template>
+  <!-- 可以在此添加一些样式 -->
   <div class="doc">
     <slot />
   </div>
 </template>
 
-<style lang="scss"> /* 注意这里去掉了 scoped */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: transparent !important;
-}
+<style lang="scss" scoped>
 
-.doc {
-  min-height: 100vh;
-  background-color: transparent;
-}
 </style>
