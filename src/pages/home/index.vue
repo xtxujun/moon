@@ -14,8 +14,7 @@ const settingStore = useSettingStore()
 
 <template>
   <TheDoc>
-    <!-- 强制白色底 + 高层级 -->
-    <div class="relative z-30 min-h-screen p-12 sm:p-24 bg-white/80 dark:bg-black/80">
+    <div class="relative z-40 p-12 sm:p-24">
       <MainHeader />
 
       <MainClock v-if="!settingStore.isSetting" />
