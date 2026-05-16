@@ -30,10 +30,3 @@ const settingStore = useSettingStore()
   </TheDoc>
 </template>
 
-<route lang="yaml">
-path: /
-children:
-  - name: setting
-    path: setting
-    component: /src/components/Blank.vue
-</route>
