@@ -19,12 +19,11 @@ const settingStore = useSettingStore()
 
       <MainClock v-if="!settingStore.isSetting" />
 
-      <!-- Bing 磨砂白透效果核心修改区域 -->
-      <div class="mt-6 max-w-[1380px] mx-auto relative z-10
-                  bg-white/70 dark:bg-black/60 
-                  backdrop-blur-2xl 
-                  rounded-3xl border border-white/30 dark:border-white/10 
-                  shadow-2xl overflow-hidden">
+      <!-- 保守磨砂卡片 - 透明度较低，尽量不破坏原有样式 -->
+      <div class="mt-6 max-w-[1380px] mx-auto 
+                  bg-white/60 dark:bg-black/50 
+                  backdrop-blur-xl 
+                  rounded-3xl border border-white/20">
         
         <div class="p-8 sm:p-10">
           <MainSearch v-if="!settingStore.isSetting" class="my-8" />
