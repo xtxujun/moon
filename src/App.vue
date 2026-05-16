@@ -32,14 +32,9 @@ onMounted(() => {
     :style="{ backgroundImage: `url(${bingBg})` }"
   ></div>
 
-  <!-- 白色磨砂毛玻璃 - 较轻版 -->
-<div class="fixed inset-0 bg-white/35 dark:bg-black/55 backdrop-blur-[6px] -z-9"></div>
+  <!-- 白色磨砂背景层 - 放在最底层 -->
+  <div class="fixed inset-0 bg-white/40 dark:bg-black/50 backdrop-blur-[6px] -z-9"></div>
 
-  <!-- 图片信息 -->
-  <div v-if="bingTitle" class="fixed bottom-6 right-6 text-white/90 dark:text-white/80 text-right z-10 max-w-xs pointer-events-none drop-shadow-md">
-    <div class="text-sm">{{ bingTitle }}</div>
-    <div class="text-xs opacity-75">{{ bingCopyright }}</div>
-  </div>
-
+  <!-- 内容层 -->
   <RouterView />
 </template>
