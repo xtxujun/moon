@@ -1,42 +1,32 @@
 <script setup lang="ts">
-import MainHeader from '@/components/MainHeader.vue'
-import MainClock from '@/components/MainClock.vue'
-import MainSearch from '@/components/MainSearch.vue'
-import SiteContainer from '@/components/SiteContainer.vue'
-import MainSetting from '@/components/MainSetting.vue'
-import TheFooter from '@/components/TheFooter.vue' // 确保路径正确
+import { ref, onMounted } from 'vue'
+import { useSettingStore } from '@/stores/setting'
 
-defineOptions({
-  name: 'HomePage',
-})
+// 修改导入路径：去掉 "Main" 前缀，匹配实际文件名
+import Header from '@/components/Header.vue'
+import Clock from '@/components/Clock.vue'
+import Search from '@/components/Search.vue'
+import SiteContainer from '@/components/SiteContainer.vue'
+import Setting from '@/components/Setting.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 const settingStore = useSettingStore()
+
+// 保留原有的壁纸逻辑（如果之前加了的话）
+const bingBg = ref('')
+const fetchBingWallpaper = async () => {
+  try {
+    const res = await fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1')
+    const data = await res.json()
+    if (data.images && data.images.length > 0) {
+      bingBg.value = 'https://www.bing.com' + data.images[0].url
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+onMounted(() => {
+  fetchBingWallpaper()
+})
 </script>
-
-<template>
-  <TheDoc>
-    <!-- 修改了这一行：删除了 bg-white/90 和 dark:bg-zinc-900/90 -->
-    <div class="relative z-[10000] min-h-screen p-12 sm:p-24 bg-transparent">
-      <MainHeader />
-
-      <MainClock v-if="!settingStore.isSetting" />
-
-      <MainSearch v-if="!settingStore.isSetting" class="my-24" />
-
-      <SiteContainer :key="settingStore.siteContainerKey" />
-
-      <MainSetting />
-
-      <TheFooter v-if="settingStore.getSettingValue('showFooter')" />
-    </div>
-  </TheDoc>
-</template>
-
-<!-- 保留这段路由配置，它负责生成 /setting 页面 -->
-<route lang="yaml">
-path: /
-children:
-  - name: setting
-    path: setting
-    component: /src/components/Blank.vue
-</route>
